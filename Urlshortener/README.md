@@ -3,6 +3,9 @@
 A URL shortener server in Java using Embedded Tomcat, Spring, and mysql.
 
 
+## Prerequisite
+Java version 8.
+
 ## Getting Started
 
 To build the application:
