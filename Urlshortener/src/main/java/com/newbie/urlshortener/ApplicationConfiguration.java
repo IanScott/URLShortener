@@ -11,6 +11,7 @@ import org.springframework.context.annotation.PropertySource;
 
 import com.newbie.urlshortener.util.Base62;
 import com.newbie.urlshortener.generator.UrlIdentifierGenerator;
+import com.newbie.urlshortener.generator.UrlIdentifierGeneratorImp;
 import com.newbie.urlshortener.services.EnlargerService;
 import com.newbie.urlshortener.services.EnlargerServiceImp;
 import com.newbie.urlshortener.services.ShortenerService;
@@ -34,11 +35,7 @@ public class ApplicationConfiguration {
 	 }
 	 @Bean
 	 public UrlIdentifierGenerator urlIdentifierGenerator() {
-		 return ()-> {
-		        final int counterValue = UrlIdentifierGenerator.counter.getAndUpdate((operand) -> (operand + 1) % 1000);
-		        final long base10Id = Long.valueOf("" + counterValue + System.currentTimeMillis());
-		        return Base62.fromBase10(base10Id);
-		    };
+		 return new UrlIdentifierGeneratorImp();
 	 }
 	
 	 @Bean
